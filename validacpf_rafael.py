@@ -12,14 +12,16 @@ class ValidaCPF:
                 cleaned_cpf += num
         return cleaned_cpf
 
-    def valida_cpf(self):
-        formated_cpf = self.retira_formatacao()
+    # This method check if the number has equals characters. If is all equals return True.
+    def check_characters(self):
+        num_cpf = self.retira_formatacao()
+        for character in num_cpf:
+            if character != num_cpf[0]:
+                return False
+        return True
 
-        # Until stating the code you have to check if the cpf have any equals number.
-
-        # My CPF
-        cpf = formated_cpf
-
+    @staticmethod
+    def valida_cpf_logic(cpf):
         # Getting numbers until -
         str_result = str(cpf)[0:9]
         numbers = [10, 9, 8, 7, 6, 5, 4, 3, 2]
@@ -66,6 +68,13 @@ class ValidaCPF:
         else:
             return False
 
+    def valida_cpf(self):
+        if self.check_characters():
+            return False
+        else:
+            bool_value = self.valida_cpf_logic(self.retira_formatacao())
+        return bool_value
+
 
 class Test_valida(unittest.TestCase):
     def setUp(self):
@@ -79,6 +88,12 @@ class Test_valida(unittest.TestCase):
         self.assertEqual(self.cpf_1.retira_formatacao(), '46494695892')
 
         self.assertEqual(self.cpf_5.retira_formatacao(), '11111178901')
+
+    def test_check_character(self):
+        # Testing if the first object has all same characters
+        self.assertEqual(self.cpf_1.check_characters(), False)
+
+        self.assertEqual(self.cpf_4.check_characters(), True)
 
     def test_valida_cpf(self):
         # Testing if the object cpf_1 in setUp is really a valid cpf.
