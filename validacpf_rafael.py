@@ -30,7 +30,6 @@ class ValidaCPF:
         # This for multiply and sum the number for me.
         for index, number in enumerate(numbers):
             result += int(str_result[index]) * number
-        print('Resultado da soma {}'.format(result))
 
         # Getting the first digit
         if (result * 10 % 11) != 10:
@@ -38,11 +37,8 @@ class ValidaCPF:
         else:
             first_digit = 0
 
-        print('Resultado da divisão por 11 é: {}'.format(first_digit))
-
         # Adding the first digit to the sequence.
         plus_digit = str_result + str(first_digit)
-        print('')
 
         # Adding eleven to the sequence numbers
         numbers.insert(0, 11)
@@ -60,7 +56,6 @@ class ValidaCPF:
 
         # Sum the too digit got.
         full_digit = str(first_digit) + str(second_digit)
-        print(full_digit)
 
         # Cheking if the number is a valid cpf
         if full_digit == str(cpf)[9:11]:
@@ -95,6 +90,8 @@ class Test_valida(unittest.TestCase):
 
         self.assertEqual(self.cpf_4.check_characters(), True)
 
+        self.assertEqual(self.cpf_5.check_characters(), False)
+
     def test_valida_cpf(self):
         # Testing if the object cpf_1 in setUp is really a valid cpf.
         self.assertEqual(self.cpf_1.valida_cpf(), True)
@@ -107,6 +104,8 @@ class Test_valida(unittest.TestCase):
 
         # Checking if 111.111.111-11 is invalid
         self.assertEqual(self.cpf_4.valida_cpf(), False)
+
+        self.assertEqual(self.cpf_5.valida_cpf(), False)
 
 
 if __name__ == '__main__':
