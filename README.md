@@ -13,6 +13,6 @@ que determina se um número é um CPF válido.
 https://dicasdeprogramacao.com.br/algoritmo-para-validar-cpf/
     
 No site acima temos as formulas utilizadas para a criação da lógica deste código.\
-<span color="red">Ao final deste mesmo site, temos o algoritmo que o autor fez para a validação, favor\
+<strong>Ao final deste mesmo site, temos o algoritmo que o autor fez para a validação, favor\
 desconsiderar este algoritmo, pois ele não foi utilizado para a criação do código\
-deste repositório.</span>     
+deste repositório.</strong>     
